@@ -19,6 +19,7 @@ def main():
         print('> processing %s...' % fn, end='')
         out = core.publish_string(input, writer_name='html5',
                                   settings_overrides=SETTINGS)
+        out = out.rstrip() + '\n'
         out_fn = input_fn.replace('.rst', '.html')
         with open(out_fn, 'wb') as f:
             f.write(out)
