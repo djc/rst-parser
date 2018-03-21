@@ -14,6 +14,6 @@ macro_rules! check_files {
 }
 
 #[test]
-fn test_paragraphs() {
-    check_files!("paragraphs.rst", "paragraphs.html");
+fn syntax() {
+    check_files!("syntax.rst", "syntax.html");
 }
