@@ -1,4 +1,4 @@
-use ast::{BlockLevel, BodyElement, Fragment};
+use ast::{BlockLevel, BodyElement, Fragment, Inline};
 
 pub struct Html5Writer {
     buf: String,
@@ -23,13 +23,17 @@ impl Html5Writer {
     fn visit_body_elem(&mut self, body: &BodyElement) {
         use ast::BodyElement::*;
         match *body {
-            Paragraph(s) => self.visit_paragraph(s),
+            Paragraph(ref items) => self.visit_paragraph(items),
         }
     }
 
-    fn visit_paragraph(&mut self, para: &str) {
+    fn visit_paragraph(&mut self, items: &[Inline]) {
         self.buf.push_str("<p>");
-        self.buf.push_str(para);
+        for item in items.iter() {
+            match *item {
+                Inline::Text(s) => self.buf.push_str(s),
+            }  
+        }
         self.buf.push_str("</p>\n");
     }
 }

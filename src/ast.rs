@@ -12,5 +12,10 @@ pub enum BlockLevel<'a> {
 
 #[derive(Debug, PartialEq)]
 pub enum BodyElement<'a> {
-    Paragraph(&'a str),
+    Paragraph(Vec<Inline<'a>>),
+}
+
+#[derive(Debug, PartialEq)]
+pub enum Inline<'a> {
+    Text(&'a str),
 }

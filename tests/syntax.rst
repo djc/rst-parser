@@ -1,5 +1,9 @@
-This is a full sentence.
+Paragraphs contain text and may contain inline markup:
+emphasis, strong emphasis, interpreted text, inline
+literals, standalone hyperlinks,
+external hyperlinks, internal cross-references,
+footnote references, citation references,
+substitution references, and inline
+internal targets.
 
-Some punctuation can be nice, too, right?
-
-Also, numbers like 1 and 2.
+Paragraphs are separated by blank lines and are left-aligned.
