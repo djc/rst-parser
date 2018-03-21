@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 from __future__ import print_function
-from docutils import core, writers
+from docutils import core
 import os
 
+SETTINGS = {
+    'template': 'tests/template.txt',
+}
+
 def main():
-    files = []
-    writer = writers.get_writer_class('html5')()
-    writer.default_stylesheets = []
-    settings = {'template': 'tests/template.txt'}
     for fn in os.listdir('tests'):
 
         if not fn.endswith('.rst'):
@@ -17,8 +17,8 @@ def main():
         with open(input_fn) as f:
             input = f.read()
         print('> processing %s...' % fn, end='')
-        out = core.publish_string(input, writer=writer,
-                                  settings_overrides=settings)
+        out = core.publish_string(input, writer_name='html5',
+                                  settings_overrides=SETTINGS)
         out_fn = input_fn.replace('.rst', '.html')
         with open(out_fn, 'wb') as f:
             f.write(out)
